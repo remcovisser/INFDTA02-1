@@ -13,7 +13,7 @@ namespace INFDTA021
           
             foreach(string raw_rating in parsed_data)
             {
-                // Get the data from the array and parse it to the correct data type
+                // Get specific data from the array and parse it to the correct datatype
                 string[] rating_values = raw_rating.Split(',');
                 int user_id = Int32.Parse(rating_values[0]);
                 int article_id = Int32.Parse(rating_values[1]);
