@@ -6,10 +6,10 @@ namespace INFDTA021
 {
     public class Importer
     {
-        public Dictionary<int, Dictionary<int, float>> GetContent(string file)
+        public Dictionary<int, Dictionary<int, double>> GetContent(string file)
         {
             string[] parsed_data = GetData(file);
-            Dictionary<int, Dictionary<int, float>> data = new Dictionary<int, Dictionary<int, float>>();
+            Dictionary<int, Dictionary<int, double>> data = new Dictionary<int, Dictionary<int, double>>();
           
             foreach(string raw_rating in parsed_data)
             {
@@ -17,16 +17,16 @@ namespace INFDTA021
                 string[] rating_values = raw_rating.Split(',');
                 int user_id = Int32.Parse(rating_values[0]);
                 int article_id = Int32.Parse(rating_values[1]);
-                float score = float.Parse(rating_values[2]);
+                double score = double.Parse(rating_values[2]);
 
                 // Only add the user_id to the dictionary once
                 if (!data.ContainsKey(user_id)) {
-                    Dictionary<int, float> rating_dic = new Dictionary<int, float>();
+                    Dictionary<int, double> rating_dic = new Dictionary<int, double>();
                     data.Add(user_id, rating_dic);
                 }
 
                 // Add the rating to the user ratings dictionary
-                Dictionary<int, float> user_ratings = data[user_id];
+                Dictionary<int, double> user_ratings = data[user_id];
                 user_ratings.Add(article_id, score);
             }
 

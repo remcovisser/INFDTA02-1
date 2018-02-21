@@ -35,6 +35,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Importer.cs" />
+    <Compile Include="Part1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="userItem.data" />
