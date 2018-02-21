@@ -40,56 +40,42 @@ namespace INFDTA021
         // Calculate the Pearson coefficient for user3 and user4 in the data set
         public double Pearson()
         {
+            // Get the parsed data
             Tuple<List<double>, List<double>> parsed_ratings = this.PearsonParseRatings();
             List<double> user1_ratings = parsed_ratings.Item1;
-            List<double> user2_ratings = parsed_ratings.Item2;
-            int ratings_count = user1_ratings.Count;
+            List<double> user2_ratings = parsed_ratings.Item2; 
+            int n = user1_ratings.Count;
 
-            // Top left
-            double xy = 0;
-            for (int i = 0; i < ratings_count; i++) 
+            // Set default values
+            double sum_of_x = 0;
+            double sum_of_y = 0;
+            double sum_of_x_squared = 0;
+            double sum_of_y_squared = 0;
+            double sum_of_x_times_y = 0;
+
+            // Calculate the values using sigma
+            for (int i = 0; i < n; i++) 
             {
-                xy += user1_ratings[i] * user2_ratings[i];
+                sum_of_x += user1_ratings[i];
+                sum_of_y += user2_ratings[i];
+                sum_of_x_squared += user1_ratings[i] * user1_ratings[i];
+                sum_of_y_squared += user2_ratings[i] * user2_ratings[i];
+                sum_of_x_times_y += user1_ratings[i] * user2_ratings[i];
             }
-
-            // Top Right
-            double xx = 0;
-            double yy = 0;
-            for (int i = 0; i < ratings_count; i++)
-            {
-                xx += user1_ratings[i];
-                yy += user2_ratings[i];
-            }
-            double xxyy = (xx * yy) / ratings_count;
-
-
-            // Bottom left left
-            double xxp = 0;
-            for (int i = 0; i < ratings_count; i++)
-            {
-                xxp += user1_ratings[i] * user1_ratings[i];
-            }
-
-            // Bottom left right
-            double xxpa = (xx * xx) / ratings_count;
-
-            // Bottom right left
-            double yyp = 0;
-            for (int i = 0; i < ratings_count; i++)
-            {
-                yyp +=user2_ratings[i] * user2_ratings[i];
-            }
-
-            // Bottom right right
-            double yypa = (yy * yy) / ratings_count;
+          
+            //  Calculate the rest of the values using the values from the loop
+            double avarage_of_sum_of_y_squared = (sum_of_y * sum_of_y) / n;
+            double avarage_of_sum_of_x_squared = (sum_of_x * sum_of_x) / n;
+            double avarage_of_sum_of_x_times_sum_of_y = (sum_of_x * sum_of_y) / n;
                     
-            double a = xy - xxyy;
-            double b = Math.Sqrt(xxp - xxpa);
-            double c = Math.Sqrt(yyp - yypa);
+            // Calculate the final values
+            double a = sum_of_x_times_y - avarage_of_sum_of_x_times_sum_of_y;
+            double b = Math.Sqrt(sum_of_x_squared - avarage_of_sum_of_x_squared);
+            double c = Math.Sqrt(sum_of_y_squared - avarage_of_sum_of_y_squared);
 
-
-            double r = a / (b * c);
-            return r;
+            // Calculate the result
+            double result = a / (b * c);
+            return result;
         }
     }
 }
