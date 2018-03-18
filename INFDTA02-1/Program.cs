@@ -14,9 +14,27 @@ namespace INFDTA021
             Dictionary<int, Dictionary<int, double>> data = importer.GetContent("userItem.data");
 
 
-            // Peason coefficient
-            Console.WriteLine("Pearson coefficient of similarity between users 10 and 11: " + new Part1(data[10], data[11]).Pearson());
-            Console.WriteLine("Pearson coefficient of similarity between users 3 and 4: " + new Part1(data[3], data[4]).Pearson());
+            // Testing
+            Console.WriteLine("Pearson coefficient between users 7 and 1: " + new Similarity(data[7], data[1]).Pearson());
+            Console.WriteLine("Pearson coefficient between users 7 and 5: " + new Similarity(data[7], data[5]).Pearson());
+            Console.WriteLine("Pearson coefficient between users 7 and 4: " + new Similarity(data[7], data[4]).Pearson());
+            Console.WriteLine("Cosine between users 7 and 6: " + new Similarity(data[7], data[6]).Cosine());
+            Console.WriteLine("Cosine between users 7 and 2: " + new Similarity(data[7], data[2]).Cosine());
+            Console.WriteLine("Cosine between users 7 and 5: " + new Similarity(data[7], data[5]).Cosine());
+            Console.WriteLine("Euclidean between users 7 and 5: " + new Similarity(data[7], data[5]).Euclidean());
+            Console.WriteLine("Euclidean between users 7 and 3: " + new Similarity(data[7], data[3]).Euclidean());
+            Console.WriteLine("Euclidean between users 7 and 4: " + new Similarity(data[7], data[4]).Euclidean());
+
+            // Find the Pearson coefficient of similarity between users 3 and 4.
+
+            /*
+             * Find the 3 nearest neighbours of user 7 (with initial similarity threshold 0.35)
+             */
+            // Pearson coefficient
+         
+            // Cosine
+            // Euclidean
+
 
 
             Console.ReadLine();
