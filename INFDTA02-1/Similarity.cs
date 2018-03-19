@@ -39,7 +39,7 @@ namespace INFDTA021
         }
 
 
-        // Transform missing values to 0
+        // Transform missing values to 0 (Cosine)
         private Tuple<List<double>, List<double>> TransformMissingToZero()
         {
             Dictionary<int, double> user1_ratings_transformed = new Dictionary<int, double>();
