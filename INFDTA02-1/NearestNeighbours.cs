@@ -8,6 +8,7 @@ namespace INFDTA021
     {
         Dictionary<int, Dictionary<int, double>> data;
         int user_id;
+        Dictionary<int, double> result;
         double treshhold = 0.35;
         int k = 3;
 
@@ -27,7 +28,7 @@ namespace INFDTA021
             for (int i = 1; i < data.Count; i++)
             {
                 List<int> target_reated_products = data[i].Keys.ToList();
-                if(similarities[i] > treshhold && !user_rated_products.SequenceEqual(target_reated_products))
+                if(similarities.ContainsKey(i) && similarities[i] > treshhold && !user_rated_products.SequenceEqual(target_reated_products) )
                 {
                     result[i] = similarities[i];
                 }
@@ -36,7 +37,7 @@ namespace INFDTA021
         }
 
 
-        private void PrintResult(Dictionary<int, double> result)
+        public void PrintResult()
         {
             int i = 1;
             foreach (KeyValuePair<int, double> rating in result)
@@ -46,8 +47,13 @@ namespace INFDTA021
             }
         }
 
+        public Dictionary<int, double> GetResult()
+        {
+            return this.result;
+        }
 
-        public void Pearson()
+
+        public NearestNeighbours Pearson()
         {
             Dictionary<int, double> similarities = new Dictionary<int, double>();
             for (int i = 1; i < data.Count; i++)
@@ -57,13 +63,13 @@ namespace INFDTA021
                     similarities.Add(i, new Similarity(data[user_id], data[i]).Pearson());
                 }
             }
+            result = GetNearestNeighbours(similarities);
 
-            Console.WriteLine("Pearson");
-            PrintResult(GetNearestNeighbours(similarities));
+            return this;
         }
 
 
-        public void Cosine()
+        public NearestNeighbours Cosine()
         {
             Dictionary<int, double> similarities = new Dictionary<int, double>();
             for (int i = 1; i < data.Count; i++)
@@ -73,13 +79,13 @@ namespace INFDTA021
                     similarities.Add(i, new Similarity(data[user_id], data[i]).Cosine());
                 }
             }
+            result = GetNearestNeighbours(similarities);
 
-            Console.WriteLine("Cosine");
-            PrintResult(GetNearestNeighbours(similarities));
+            return this;
         }
 
 
-        public void Euclidean()
+        public NearestNeighbours Euclidean()
         {
             Dictionary<int, double> similarities = new Dictionary<int, double>();
             for (int i = 1; i < data.Count; i++)
@@ -89,9 +95,9 @@ namespace INFDTA021
                     similarities.Add(i, new Similarity(data[user_id], data[i]).Euclidean());
                 }
             }
+            result = GetNearestNeighbours(similarities);
 
-            Console.WriteLine("Euclidean");
-            PrintResult(GetNearestNeighbours(similarities));
+            return this;
         }
 
     }

@@ -26,9 +26,17 @@ namespace INFDTA021
             //Console.WriteLine("Euclidean between users 7 and 4: " + new Similarity(data[7], data[4]).Euclidean());
 
 
-            new NearestNeighbours(data, 7).Pearson();
-            new NearestNeighbours(data, 7).Cosine();
-            new NearestNeighbours(data, 7).Euclidean();
+            //new NearestNeighbours(data, 7).Pearson().PrintResult();
+            //new NearestNeighbours(data, 7).Cosine().PrintResult();
+            //new NearestNeighbours(data, 7).Euclidean().PrintResult();
+
+
+            // Given the 3 nearest neighbours of user 7 (computed with Pearson), predict the ratings that user 7 would give to items 101, 103, 106.
+            Console.WriteLine("Predict the ratings that user 7 would give to items 101 = " + new PredictingRatings(data, 101, 7).Pearson());
+            Console.WriteLine("Predict the ratings that user 7 would give to items 103 = " + new PredictingRatings(data, 103, 7).Pearson());
+            Console.WriteLine("Predict the ratings that user 7 would give to items 106 = " + new PredictingRatings(data, 106, 7).Pearson());
+
+            Console.WriteLine("Predict the ratings that user 4 would give to items 101 = " + new PredictingRatings(data, 101, 4).Pearson());
 
 
             // Find the Pearson coefficient of similarity between users 3 and 4.

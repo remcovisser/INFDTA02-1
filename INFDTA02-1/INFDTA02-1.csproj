@@ -37,6 +37,7 @@
     <Compile Include="Importer.cs" />
     <Compile Include="Similarity.cs" />
     <Compile Include="NearestNeighbours.cs" />
+    <Compile Include="PredictingRatings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="userItem.data" />
