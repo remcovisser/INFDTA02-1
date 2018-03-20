@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{22349D2C-6109-4C8E-BE78-87F7718A5E77}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="INFDTA02-1 Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="INFDTA02-1/NearestNeighbours.cs">
     <Files>
       <File FileName="INFDTA02-1/Program.cs" Line="30" Column="39" />
       <File FileName="INFDTA02-1/PredictingRatings.cs" Line="31" Column="141" />
@@ -7,7 +7,6 @@
       <File FileName="INFDTA02-1/Similarity.cs" Line="121" Column="14" />
       <File FileName="INFDTA02-1/userItem.data" Line="35" Column="10" />
       <File FileName="INFDTA02-1/Importer.cs" Line="22" Column="63" />
-      <File FileName="INFDTA02-1 Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

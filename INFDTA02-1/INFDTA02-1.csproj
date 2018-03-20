@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="userItem.data" />
+    <None Include="ratings.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

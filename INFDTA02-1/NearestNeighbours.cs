@@ -8,15 +8,16 @@ namespace INFDTA021
     {
         Dictionary<int, Dictionary<int, double>> data;
         int user_id;
+        int k;
         Dictionary<int, double> result;
         double treshhold = 0.35;
-        int k = 3;
 
         // Set the user properties
-        public NearestNeighbours(Dictionary<int, Dictionary<int, double>> data, int user_id)
+        public NearestNeighbours(Dictionary<int, Dictionary<int, double>> data, int user_id, int k = 3)
         {
             this.data = data;
             this.user_id = user_id;
+            this.k = k;
         }
 
 

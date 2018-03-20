@@ -11,6 +11,7 @@ namespace INFDTA021
             // --------------------- Part 1 ---------------------
             // Import the data from userItem.data
             var importer = new Importer();
+            Dictionary<int, Dictionary<int, double>> data_movielens = importer.GetMovielensData("ratings.csv");
             Dictionary<int, Dictionary<int, double>> data = importer.GetContent("userItem.data");
 
 
@@ -32,12 +33,16 @@ namespace INFDTA021
 
 
             // Given the 3 nearest neighbours of user 7 (computed with Pearson), predict the ratings that user 7 would give to items 101, 103, 106.
-            Console.WriteLine("Predict the ratings that user 7 would give to items 101 = " + new PredictingRatings(data, 101, 7).Pearson());
-            Console.WriteLine("Predict the ratings that user 7 would give to items 103 = " + new PredictingRatings(data, 103, 7).Pearson());
-            Console.WriteLine("Predict the ratings that user 7 would give to items 106 = " + new PredictingRatings(data, 106, 7).Pearson());
+            //Console.WriteLine("Predict the rating that user 7 would give to items 101 = " + new PredictingRatings(data, 101, 7).Pearson());
+            //Console.WriteLine("Predict the rating that user 7 would give to items 103 = " + new PredictingRatings(data, 103, 7).Pearson());
+            //Console.WriteLine("Predict the rating that user 7 would give to items 106 = " + new PredictingRatings(data, 106, 7).Pearson());
+            //// Given the 3 nearest neighbours of user 4 computed with Pearson, predict the rating that user 4 would give to item 101.
+            //Console.WriteLine("Predict the rating that user 4 would give to items 101 = " + new PredictingRatings(data, 101, 4).Pearson());
 
-            Console.WriteLine("Predict the ratings that user 4 would give to items 101 = " + new PredictingRatings(data, 101, 4).Pearson());
-
+            // Using the MovieLens dataset, consider user 186 and create a list of the 8 top recommendations for him, 
+            // together with their predicted rating. Use Pearson coefficient, 25 nearest neighbours, simil. threshold 0,35.
+            new NearestNeighbours(data_movielens, 186, 25).Pearson().PrintResult();
+            Console.WriteLine(new PredictingRatings(data_movielens, 186, 25).Pearson());
 
             // Find the Pearson coefficient of similarity between users 3 and 4.
 
